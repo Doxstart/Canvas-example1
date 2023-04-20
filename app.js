@@ -1,24 +1,37 @@
-console.log('ecco');
-
 const myCanvas = document.getElementById('my-canvas');
 
 const ctx = myCanvas.getContext('2d');
 
-// ctx.fillRect(20,20,50,50);
-// ctx.fillRect(90,20,50,50);
-// ctx.fillRect(160,20,50,50);
-// ctx.fillRect(230,20,50,50);
-// ctx.fillRect(300,20,50,50);
-// ctx.fillRect(370,20,50,50);
-// ctx.fillRect(440,20,50,50);
-// ctx.fillRect(510,20,50,50);
+const point = {x: 300, y: 300};
+
+setInterval(() => {
+    const randomX = (Math.random() * 4)-2; 
+    const randomY = (Math.random() * 4)-2; 
+    point.x += randomX;
+    point.y += randomY;
+
+    ctx.fillStyle = 'red';
+
+    ctx.fillRect(point.x, point.y, 10, 10);
+}, 0.1);
 
 for (let i = 0; i < 100; i++) {
-    const originX = Math.random() * 600;
-    const originY = Math.random() * 600;
-    const width = Math.random() * 100;
-    const height = Math.random() *100;
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
 
-    ctx.fillRect(originX,originY,width,height);
+    const point = {x: 300, y: 300};
+
+    point.color = `rgba(${red},${green},${blue})`;
     
+    setInterval(() => {
+        const randomX = (Math.random() * 4)-2; 
+        const randomY = (Math.random() * 4)-2; 
+        point.x += randomX;
+        point.y += randomY;
+    
+        ctx.fillStyle = point.color;
+    
+        ctx.fillRect(point.x, point.y, 10, 10);
+    }, 0.1);
 }
